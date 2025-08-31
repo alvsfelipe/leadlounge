@@ -434,9 +434,10 @@ def internal_error(error):
         'timestamp': datetime.now().isoformat()
     }), 500
 
-if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5001))  # alterado de 5000 para 5001
-    debug = os.environ.get('FLASK_ENV') == 'development'
+if __name__ == "__main__":
+    # Railway define a porta via variável de ambiente PORT
+    port = int(os.environ.get("PORT", 5001))  # usa 5001 se PORT não estiver definida
+    app.run(host="0.0.0.0", port=port)
     
     print(f"🚀 Lead Lounge AI Backend iniciando na porta {port}")
     print(f"📊 Modo: {'Desenvolvimento' if debug else 'Produção'}")
